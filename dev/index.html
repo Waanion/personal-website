@@ -13,16 +13,38 @@
     
 </head>
 <body>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
 <div id="header">
     <div class="container">
         <nav>
             <img src="Portfilio/Images/logo.png" class="logo">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Works</a></li>
-                <li><a href="#">Contact</a></li>
+            <ul id="sidemenu">
+                <li><a href="#header">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Works</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <i class="fa-solid fa-bars fas" onclick="closemenu()"></i>
             </ul>
+            <i class="fa-solid fa-bars fas" onclick="openmenu()"></i>
         </nav>
         <div class="header-text">
             <p>Welcome!</p>
@@ -75,7 +97,7 @@
 
 <!-- ----------projects------------ -->
 
-<div id="services">
+<div id="projects">
     <div class="container">
         <h1 class="sub-title">Projects</h1>
         <div class="project-list">
@@ -98,6 +120,38 @@
 </div>
 
 <!-- --------------------Contacts--------------------- -->
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class = "sub-title">Contact Me</h1>
+                <p><i class="fa-solid fa-paper-plane"></i>mputi127@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i>09665746761</p>
+                <div class="social-icons">
+                    <a href="https://facebook.com/Mlspts/"><i class="fa-brands fa-square-facebook"></i></a>
+                    <a href="https://x.com"><i class="fa-brands fa-square-twitter"></i></a>
+                    <a href="https://instagram.com"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://linkedIn.com/in/M1les"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+                <a href="Portfilio/resume.pdf" download class="btn btn2">Download CV</a>
+
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="Message"  rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2">Submit</button>
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>Copyright © Mike. Thank you for checking out!</p>
+    </div>
+</div>
+
 
 <script>
     var tablinks = document.getElementsByClassName("tab-links");
@@ -114,7 +168,40 @@
         document.getElementById(tabname).classList.add("active-tab");
     }
 </script>
+<script>
+
+    var sidemenu = document.getElementById('sidemenu');
+    function openmenu(){
+        sidemenu.style.right = '0';
+    }
+    function closemenu(){
+        sidemenu.style.right = '-300px';
+    }
+    
+</script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycby-Z506YLhbKi0NFjYgQmwSsggCBOnBwxvf5IbDbEBYBQ5JgiiBeZdgkSPn51eiXbJa_g/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById('msg')
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message sent"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            }, 5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+  <script src="app.jss">
+  </script>
 </body>
+<!-- 
+------------------------------------------------starrybackground------------------------------------------- -->
 <div class="bg"></div>
 
 <div class="star-field">
@@ -122,6 +209,8 @@
 <div class="layer"></div>
 <div class="layer"></div>
 
+
+<!-- -------------------------------------------------------Cursor------------------------------------------------------- -->
 
 
 
